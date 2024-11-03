@@ -231,15 +231,7 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  if (typeof value === 'number') {
-    return value;
-  } else if (typeof value === 'string') {
-    const parsedNumber = parseFloat(value);
-    if (!isNaN(parsedNumber)) {
-      return parsedNumber;
-    }
-  }
-  return def;
+  ;
 }
 
 /**
