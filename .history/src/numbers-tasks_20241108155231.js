@@ -536,7 +536,7 @@ function roundToSmallestInteger(number) {
  * -5.9 => -5
  */
 function roundToLargestInteger(number) {
-  return Math.ceil(number);
+  ;
 }
 
 /**
@@ -550,8 +550,8 @@ function roundToLargestInteger(number) {
  * 5.4  => 5
  * -5.5 => -5
  */
-function roundToNearestInteger(number) {
-  Math.round(number);
+function roundToNearestInteger( /* number */ ) {
+  throw new Error('Not implemented');
 }
 
 /**
