@@ -318,7 +318,7 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  return Number.isInteger(Math.log2(num));
+  return num > 0 && (num && num - 1) === 0;
 }
 
 /**
@@ -454,7 +454,8 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  return Number.parseFloat(str);
+  const parsedNumber = parseFloat(str);
+  return Number.isNaN(parsedNumber) ? NaN : parsedNumber;
 }
 
 /**
@@ -472,7 +473,8 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  return Number.parseInt(str, base);
+  const parsedInt = parseInt(str, base);
+  return Number.isNaN(parsedInt) ? NaN : parsedInt;
 }
 
 /**
