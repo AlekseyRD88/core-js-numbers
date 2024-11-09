@@ -333,7 +333,8 @@ function isPowerOfTwo(num) {
  *   Math.PI / 2 => 1
  */
 function getSine(num) {
-  return Math.sin(num);
+  const sine = num * (Math.PI / 180);
+  return Math.sin(sine);
 }
 
 /**
@@ -426,7 +427,7 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  return Number.isFinite(number);
+  return typeof number === 'number';
 }
 
 /**
@@ -564,7 +565,7 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return Number.parseFloat((x1 + x2 + x3).toFixed(2));
+  return x1 + x2 + x3;
 }
 
 /**
@@ -596,7 +597,9 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  const minInteger = Math.ceil(min);
+  const maxInteger = Math.floor(max);
+  return Math.floor(Math.random() * (maxInteger - minInteger + 1)) + minInteger;
 }
 
 /**
@@ -627,7 +630,7 @@ function getHypotenuse(a, b) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
-  return Math.ceil(Math.abs(number) / 2);
+  return Math.floor(number / 2);
 }
 
 module.exports = {

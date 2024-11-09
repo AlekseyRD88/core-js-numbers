@@ -596,7 +596,9 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  const minInteger = Math.ceil(min);
+  const maxInteger = Math.floor(max);
+  return Math.floor(Math.random() * (maxInteger - minInteger + 1)) + minInteger;
 }
 
 /**
@@ -627,7 +629,7 @@ function getHypotenuse(a, b) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
-  return Math.ceil(Math.abs(number) / 2);
+  return Math.floor(number / 2);
 }
 
 module.exports = {
