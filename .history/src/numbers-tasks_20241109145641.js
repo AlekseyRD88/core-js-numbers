@@ -322,7 +322,10 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  return num > 0 && (num && num - 1) === 0;
+  if (num <= 0) {
+    return false;
+  }
+  return (num & (num - 1)) === 0;
 }
 
 /**
@@ -397,7 +400,9 @@ function toFixed(number, fractionDigits) {
  * 12.345, 4   => '12.35'
  */
 function toPrecision(number, precision) {
-  return number.toPrecision(precision);
+  const exponent = Math.floor(Math.log10(Math.abs(number)));
+  const roundedNumber = Math.round(number / Math.pow(10, exponent - precision + 1)) * Math.pow(10, exponent - precision + 1);
+  return roundedNumber.toString();;
 }
 
 /**
@@ -600,9 +605,9 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  const minInteger = Math.ceil(min);
-  const maxInteger = Math.floor(max);
-  return Math.floor(Math.random() * (maxInteger - minInteger + 1)) + minInteger;
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**

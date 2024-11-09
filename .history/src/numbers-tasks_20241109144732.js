@@ -231,8 +231,7 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  const parsedValue = Number(value);
-  return Number.isNaN(parsedValue) ? def : parsedValue;
+
 }
 
 /**
@@ -264,10 +263,13 @@ function getCube(num) {
  *   10 => 55
  */
 function getFibonacciNumber(index) {
-  if (index <= 1) {
-    return index;
+  if (index <= 0) {
+    return 0;
+  } else if (index === 1) {
+    return 1;
+  } else {
+    return getFibonacciNumber(index - 1) + getFibonacciNumber(index - 2);
   }
-  return getFibonacciNumber(index - 1) + getFibonacciNumber(index - 2);
 }
 
 /**
@@ -302,10 +304,9 @@ function getSumToN(n) {
  */
 function getSumOfDigits(num) {
   let sum = 0;
-  let digit = num;
-  while (digit > 0) {
-    sum += digit % 10;
-    digit = Math.floor(num / 10);
+  while (num > 0) {
+    sum += num % 10;
+    num = Math.floor(num / 10);
   }
   return sum;
 }
@@ -322,7 +323,10 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  return num > 0 && (num && num - 1) === 0;
+  if (num <= 0) {
+    return false;
+  }
+  return (num & (num - 1)) === 0;
 }
 
 /**
@@ -397,7 +401,9 @@ function toFixed(number, fractionDigits) {
  * 12.345, 4   => '12.35'
  */
 function toPrecision(number, precision) {
-  return number.toPrecision(precision);
+  const exponent = Math.floor(Math.log10(Math.abs(number)));
+  const roundedNumber = Math.round(number / Math.pow(10, exponent - precision + 1)) * Math.pow(10, exponent - precision + 1);
+  return roundedNumber.toString();;
 }
 
 /**
@@ -600,9 +606,9 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  const minInteger = Math.ceil(min);
-  const maxInteger = Math.floor(max);
-  return Math.floor(Math.random() * (maxInteger - minInteger + 1)) + minInteger;
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
